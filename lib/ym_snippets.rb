@@ -1,0 +1,2 @@
+module YmSnippets
+end
