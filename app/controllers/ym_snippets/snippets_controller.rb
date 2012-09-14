@@ -1,14 +1,12 @@
 class YmSnippets::SnippetsController < ApplicationController
+  load_and_authorize_resource
   
   def edit
-    @snippet = YmSnippets::Snippet.find(params[:id])
     session[:snippet_return_to] = request.referer
   end
   
   def update
-    @snippet = YmSnippets::Snippet.find(params[:id])
     @snippet.update_attributes(params[:snippet])
-    
     if @snippet.save
       redirect_to session[:snippet_return_to]
     else
