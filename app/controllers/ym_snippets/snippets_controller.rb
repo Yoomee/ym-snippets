@@ -5,6 +5,10 @@ class YmSnippets::SnippetsController < ApplicationController
     session[:snippet_return_to] = request.referer
   end
   
+  def index
+    @snippets = YmSnippets::Snippet.order(:slug)
+  end
+  
   def update
     @snippet.update_attributes(params[:snippet])
     if @snippet.save
